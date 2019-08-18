@@ -15,13 +15,13 @@ sell = short = (ms < ml) & (ms.shift() > ml.shift())
 ```
 
 And then tested like this:
-`pybacktest.Backtest(locals())`
+`backtesting.Backtest(locals())`
 
 We use it in our research and production operations.
 
 ## Installation
 ```
-pip install git+https://github.com/IloveHubGit/pybacktest.git
+pip install git+https://github.com/IloveHubGit/backtesting.git
 ```
 If you don't install it in virtualenv, you might need to prepend last line with sudo.
 
