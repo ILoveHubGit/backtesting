@@ -5,7 +5,7 @@
 """ Production-related code, used to extract signals from Backtest. """
 
 
-from pybacktest.backtest import Backtest
+from backtesting.backtest import Backtest
 
 
 def check_position_change(strategy_outs):
