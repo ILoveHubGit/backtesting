@@ -1,6 +1,6 @@
 import pandas
 import sys
-from pybacktest.backtest import Backtest
+from backtesting.backtest import Backtest
 
 
 def iter_verify(strategy_fn, data, window_size):
