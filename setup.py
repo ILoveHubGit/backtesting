@@ -11,12 +11,12 @@ extra_args = {}
 if (sys.version_info[0] >= 3):
     extra_args['use_2to3'] = True
 
-setup(name='pybacktest',
+setup(name='backtesting',
       version=VERSION,
-      description='pybacktest',
-      author='Matvey Ezhov',
-      url='https://github.com/ematvey/pybacktest',
-      packages=['pybacktest'],
+      description='backtesting',
+      author='Jeroen Verschuuren',
+      url='https://github.com/ILoveHubGit/backtesting',
+      packages=['backtesting'],
       install_requires=['numpy>=1.11',
                         'pandas>=0.19',
                         'pyyaml',
