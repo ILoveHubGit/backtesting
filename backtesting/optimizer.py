@@ -5,7 +5,7 @@
 """ Optimizer class """
 
 from cached_property import cached_property
-from pybacktest.backtest import Backtest
+from backtesting.backtest import Backtest
 
 import itertools
 import pandas
