@@ -16,7 +16,7 @@ __all__ = ['Backtest']
 
 class StatEngine(object):
     def __init__(self, equity_fn):
-        self._stats = [i for i in dir(pybacktest.performance) if not i.startswith('_')]
+        self._stats = [i for i in dir(backtesting.performance) if not i.startswith('_')]
         self._equity_fn = equity_fn
 
     def __dir__(self):
@@ -25,7 +25,7 @@ class StatEngine(object):
     def __getattr__(self, attr):
         if attr in self._stats:
             equity = self._equity_fn()
-            fn = getattr(pybacktest.performance, attr)
+            fn = getattr(backtesting.performance, attr)
             try:
                 return fn(equity)
             except:
@@ -89,9 +89,9 @@ class Backtest(object):
         self._sig_mask_ext = signal_fields
         self._pr_mask_ext = price_fields
         self.name = name
-        self.trdplot = self.sigplot = pybacktest.parts.Slicer(self.plot_trades,
+        self.trdplot = self.sigplot = backtesting.parts.Slicer(self.plot_trades,
                                                    obj=self.ohlc)
-        self.eqplot = pybacktest.parts.Slicer(self.plot_equity, obj=self.ohlc)
+        self.eqplot = backtesting.parts.Slicer(self.plot_equity, obj=self.ohlc)
         self.run_time = time.strftime('%Y-%d-%m %H:%M %Z', time.localtime())
         self.stats = StatEngine(lambda: self.equity)
 
@@ -104,12 +104,12 @@ class Backtest(object):
 
     @cached_property
     def signals(self):
-        return pybacktest.parts.extract_frame(self.dataobj, self._sig_mask_ext,
+        return backtesting.parts.extract_frame(self.dataobj, self._sig_mask_ext,
                                    self._sig_mask_int).fillna(value=False)
 
     @cached_property
     def prices(self):
-        return pybacktest.parts.extract_frame(self.dataobj, self._pr_mask_ext,
+        return backtesting.parts.extract_frame(self.dataobj, self._pr_mask_ext,
                                    self._pr_mask_int)
 
     @cached_property
@@ -130,7 +130,7 @@ class Backtest(object):
 
     @cached_property
     def positions(self):
-        return pybacktest.parts.signals_to_positions(self.signals,
+        return backtesting.parts.signals_to_positions(self.signals,
                                           mask=self._sig_mask_int)
 
     @cached_property
@@ -149,7 +149,7 @@ class Backtest(object):
 
     @cached_property
     def equity(self):
-        return pybacktest.parts.trades_to_equity(self.trades)
+        return backtesting.parts.trades_to_equity(self.trades)
 
     @cached_property
     def ohlc(self):
@@ -161,7 +161,7 @@ class Backtest(object):
 
     @cached_property
     def report(self):
-        return pybacktest.performance.performance_summary(self.equity)
+        return backtesting.performance.performance_summary(self.equity)
 
     def summary(self):
         import yaml
