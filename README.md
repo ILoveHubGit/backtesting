@@ -1,5 +1,5 @@
-# pybacktest
-Simple yet powerful backtesting framework in python/pandas.
+# Backtesting
+Simple yet powerful backtesting framework in python/pandas, originally cloned from pybacktest
 
 Currently I don't plan to continue working on this project.
 
