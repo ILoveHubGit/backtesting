@@ -6,8 +6,8 @@
 import time
 
 from cached_property import cached_property
-import pybacktest.performance
-import pybacktest.parts
+import backtesting.performance
+import backtesting.parts
 import pandas
 
 
