@@ -1,7 +1,7 @@
-from pybacktest.backtest import Backtest
-from pybacktest.optimizer import Optimizer
-from pybacktest import performance
-from pybacktest.data import load_from_yahoo
-from pybacktest.ami_funcs import *
-from pybacktest.verification import iter_verify, verify
-from pybacktest.production import check_position_change
+from backtesting.backtest import Backtest
+from backtesting.optimizer import Optimizer
+from backtesting import performance
+from backtesting.data import load_from_yahoo
+from backtesting.ami_funcs import *
+from backtesting.verification import iter_verify, verify
+from backtesting.production import check_position_change
