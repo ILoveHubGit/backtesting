@@ -21,7 +21,7 @@ We use it in our research and production operations.
 
 ## Installation
 ```
-pip install git+https://github.com/ematvey/pybacktest.git
+pip install git+https://github.com/IloveHubGit/pybacktest.git
 ```
 If you don't install it in virtualenv, you might need to prepend last line with sudo.
 
