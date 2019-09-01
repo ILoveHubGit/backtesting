@@ -203,7 +203,7 @@ class Backtest(object):
     def plot_trades(self, subset=None, ax=None):
         if subset is None:
             subset = slice(None, None)
-        fr = self.trades.ix[subset]
+        fr = self.trades.loc[subset]
         le = fr.price[(fr.pos > 0) & (fr.vol > 0)]
         se = fr.price[(fr.pos < 0) & (fr.vol < 0)]
         lx = fr.price[(fr.pos.shift() > 0) & (fr.vol < 0)]
@@ -213,16 +213,20 @@ class Backtest(object):
         _ = None
         if ax is None:
             _,ax = pylab.subplots()
-
-        ax.plot(le.index, le.values, '^', color='lime', markersize=12,
+        
+        if len(le) != 0:
+            ax.plot(le.index, le.values, '^', color='lime', markersize=12,
                    label='long enter')
-        ax.plot(se.index, se.values, 'v', color='red', markersize=12,
+        if len(se) != 0:
+            ax.plot(se.index, se.values, 'v', color='red', markersize=12,
                    label='short enter')
-        ax.plot(lx.index, lx.values, 'o', color='lime', markersize=7,
+        if len(lx) != 0:
+            ax.plot(lx.index, lx.values, 'o', color='lime', markersize=7,
                    label='long exit')
-        ax.plot(sx.index, sx.values, 'o', color='red', markersize=7,
+        if len(sx) != 0:
+            ax.plot(sx.index, sx.values, 'o', color='red', markersize=7,
                    label='short exit')
         
-        self.ohlc.O.ix[subset].plot(color='black', label='price', ax=ax)
+        self.ohlc.O.loc[subset].plot(color='black', label='price', ax=ax)
         ax.set_ylabel('Trades for %s' % subset)
         return _,ax
